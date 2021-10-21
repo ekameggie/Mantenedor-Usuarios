@@ -1,0 +1,44 @@
+<div class="card ">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12 ">
+                <ng-container *ngIf="producto==null">
+                    <span class="text-primary">
+                        <b> REGISTRAR PRODUCTO</b>
+                    </span>  
+                </ng-container>
+                <ng-container *ngIf="producto!=null">
+                    <span class="text-primary">
+                        <b>MODIFICAR DATOS DEL PRODUCTO</b> 
+                    </span>  
+                </ng-container>
+                <button type="button" class="close" aria-label="Close" (click)="cerrarVentana()"  >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="col-md-12 ">
+                <form>
+                    <div class="form-group">
+                        <label for="validation01">Nombre del producto</label>
+                        <input type="text" name="nombres" id="nombres" class="form-control" [(ngModel)]="_producto.nombre" >
+                    </div>
+                    <div class="form-group">
+                        <label for="validation01">Precio</label>
+                        <input type="number" name="precio" id="precio" class="form-control" [(ngModel)]="_producto.precio" >
+                    </div>
+                  </form>
+               
+            </div>
+            <div class="col-md-12 text-right">
+                <ng-container *ngIf="producto==null">
+                    <button (click)="Registrar(0)" class="btn btn-success btn-sm">REGISTRAR</button>
+                </ng-container>
+                <ng-container *ngIf="producto!=null">
+                    <button (click)="Registrar(1)"class="btn btn-success btn-sm">MODIFICAR</button>
+                </ng-container>
+                <button (click)="cerrarVentana()" class="btn btn-outline-dark btn-sm">CANCELAR</button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="card">
+    <div class="card-header"> 
+        Mantenedor de sucursales
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div  class="col">
+                <div class="col-md-12 text-right">
+                    <button [disabled]="mostrarFormulario" (click)="MostrarFormularioRegistro(null)" class="btn btn-outline-success"> Nuevo sucursal</button>
+                    <br><br>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover ">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre </th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody >
+                            <ng-container *ngFor="let row of sucursales; let i = index">
+                                <tr>
+                                    <td scope="row">
+                                        {{i+1}}
+                                    </td>
+                                    <td>
+                                        {{row.sucursal}}
+                                    </td>
+                                    <td>
+                                        <div class="text-right">
+                                            <button (click)="MostrarFormularioRegistro(row)"  [disabled]="mostrarFormulario" class="btn btn-outline-primary btn-sm"> Modificar</button>
+                                            <button (click)="Eliminar(row)" [disabled]="mostrarFormulario" class="btn btn-outline-secondary btn-sm"> Eliminar</button>
+                                        </div>
+                                    </td>
+                                  </tr>
+                            </ng-container>
+                          
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            <div *ngIf="mostrarFormulario" class="col">
+                <app-registro-sucursal 
+                    [sucursal]="_Sucursal"         
+                    (cerrar)="cerrar()">
+                </app-registro-sucursal>
+            </div>
+        </div>
+    </div>
+</div>

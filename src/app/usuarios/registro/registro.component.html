@@ -1,0 +1,58 @@
+<div class="card ">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12 ">
+                <ng-container *ngIf="user==null">
+                    <span class="text-primary">
+                        <b> REGISTRAR USUARIO</b>
+                    </span>  
+                </ng-container>
+                <ng-container *ngIf="user!=null">
+                    <span class="text-primary">
+                        <b>MODIFICAR DATOS DEL USUARIO</b> 
+                    </span>  
+                </ng-container>
+                <button type="button" class="close" aria-label="Close" (click)="cerrarVentana()"  >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="col-md-12 ">
+                <form>
+                    <div class="form-group">
+                        <label for="validation01">Nombres</label>
+                        <input type="text" name="nombres" id="nombres" class="form-control" [(ngModel)]="usuario.nombres" >
+
+                    </div>
+                    <div class="form-group">
+                        <label for="validation02">Usuario</label>
+                        <input type="text" name="user" id="user" class="form-control" [(ngModel)]="usuario.user" >
+                    </div>
+                    <div class="form-group">
+                        <label for="validation02">Password</label>
+                        <input type="password" name="pass" id="pass" class="form-control" [(ngModel)]="usuario.pass" >
+                    </div>
+                    <div class="form-group">
+                        <label for="validation02">Sucursal</label>
+                        <select name="sucursal" class="form-control" id="sucursal" [(ngModel)]="usuario.sucursal" >
+                            <option value="undefined"  selected>SELECCIONAR</option>
+                            <ng-container  *ngFor="let row of sucursal">
+                                <option  [value]="row.Cod_Sucursal">{{row.sucursal}}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                  </form>
+               
+            </div>
+            <div class="col-md-12 text-right">
+                <ng-container *ngIf="user==null">
+                    <button (click)="Registrar(0)" class="btn btn-success btn-sm">REGISTRAR</button>
+                </ng-container>
+                <ng-container *ngIf="user!=null">
+                    <button (click)="Registrar(1)"class="btn btn-success btn-sm">MODIFICAR</button>
+                </ng-container>
+                <button (click)="cerrarVentana()" class="btn btn-outline-dark btn-sm">CANCELAR</button>
+            </div>
+
+        </div>
+    </div>
+</div>
